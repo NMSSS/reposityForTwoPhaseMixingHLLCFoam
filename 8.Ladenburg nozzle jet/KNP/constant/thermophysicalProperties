@@ -1,0 +1,70 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      thermophysicalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+LiqPhaseName    Liq;
+GasPhaseName    Gas;
+
+pMin            pMin [ 1 -1 -2 0 0 0 0 ] 10;
+
+Pc    2.2064e7; //critical pressure
+Tc    647.096;   //critical temperature
+
+Pt    611.655;   //triple point pressure
+Tt    273.16;	 //triple point temperature
+
+saturationModel
+{
+    type     Antoine;
+    A       23.6362;
+    B       -4169.84;
+    C       -28.665;
+}
+
+
+Liq
+{
+    //not used in this simulation
+    p           p;
+    T           T;
+    
+    Cp          4194.6;
+    Cv          3889.5;
+    mu          2.91e-4;  	//viscosity Pa*s
+    Pr          1.814;		//Prandtl
+    rho0        973.7;
+    p0          41682;
+    T0          350.0;
+    R           6934;
+    H0			321790;
+}
+
+Gas
+{
+    p           p;
+    T           T;
+
+    Cp          1004.5;
+    Cv          1004.5;
+    mu          1.85e-5;	//viscosity Pa*s
+    Pr          1.0;		//Prandtl
+    rho0        0;
+    p0          0;//0.0;
+    T0          0.0;
+    R           287;
+    H0			0;
+}
+// ************************************************************************* //

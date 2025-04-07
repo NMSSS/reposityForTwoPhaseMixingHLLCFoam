@@ -1,0 +1,68 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v1912                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     twoPhaseMixingHLLCFoamHRM;
+
+startFrom       latestTime;//startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         0.0002;
+
+deltaT          1e-11;//1e-6;
+
+writeControl    adjustable;
+
+writeInterval   1e-6;//1e-3;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  14;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   12;
+
+runTimeModifiable yes;
+
+adjustTimeStep   true;//false;
+
+maxCo           0.2;
+maxAlphaCo      1;
+
+maxDeltaT       0.6e-8;
+
+CourantType     cellCourant;
+libs ("libcompressibleTools.so");
+functions
+{
+	libs	("libfieldFunctionObjects.so");
+	yPlus
+	{
+		type	yPlus;
+		executeControl	writeTime;
+		writeControl	writeTime;
+	}
+}
+
+// ************************************************************************* //

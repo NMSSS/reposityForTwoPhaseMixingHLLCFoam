@@ -1,0 +1,113 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+asymmSolver PBiCGStab;
+
+solvers
+{
+    /*"Y.*"
+    {
+        solver                  $asymmSolver;
+        tolerance               1e-11;
+        relTol                  0.0;
+        preconditioner          DILU;
+        smoother                DILUGaussSeidel;
+        
+        //nLimiterIter		3;
+    }
+
+    "(rho|rhoFinal)"
+    {
+        solver          diagonal;
+    }
+
+    "(U|k|omega)"
+    {
+        solver                  $asymmSolver;
+        tolerance               1e-11;
+        relTol                  0.0;
+        preconditioner          DILU;
+        smoother                DILUGaussSeidel;
+    }
+
+    "(U|k|omega)Final"
+    {
+        $U;
+        relTol          0;
+    }
+
+    "(h|hFinal)"
+    {
+        solver              $asymmSolver;
+        preconditioner  DILU;
+        tolerance        1e-11;
+        relTol           0;
+        smoother                DILUGaussSeidel;
+    };
+
+    p
+    {
+        solver               $asymmSolver;
+        preconditioner  DILU;
+        tolerance        1e-11;
+        relTol           1e-2;
+        smoother                DILUGaussSeidel;
+    }
+
+    pFinal
+    {
+	$p;
+	relTol 0;
+    }*/
+    
+    
+    "(rho|U|h|p|C0|Yi|Y.Liq).*"
+    {
+        solver          PBiCGStab;
+        preconditioner	DILU;
+        tolerance       1e-15;
+        relTol          0.0;
+    }
+}
+
+PIMPLE
+{
+    momentumPredictor           false; //true;
+    nCorrectors                 1;
+    nOuterCorrectors            3;
+    nonOrthogonalityThreshold   60;
+    skewnessThreshold           0.5;
+    updateEnergyInPISO          false;
+    fluxScheme                  HLLC;//Kurganov; //Tadmor;
+
+    kappaFunction
+    {
+        type sonicCourantInverse;
+        sonicCourantInverseCoeffs
+        {
+            writeMaxMin true;
+        }
+
+        //type standardMachToAcCourantRatio;
+        standardMachToAcCourantRatioCoeffs
+        {
+            writeMaxMin true;
+        }
+    }
+}
+
+// ************************************************************************* //

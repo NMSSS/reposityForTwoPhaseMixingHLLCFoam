@@ -1,0 +1,100 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2312                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       dictionary;
+    location    "0.0008/uniform/functionObjects";
+    object      functionObjectProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+cdf7e925f5746741c316f5fbcf39ad0dfca90775
+{
+    sample
+    {
+        scalar
+        {
+            average(line,T) 307.1419651214457;
+            min(line,T)     226.8004305184911;
+            max(line,T)     385.1637522496073;
+            average(T)      307.1419651214457;
+            min(T)          226.8004305184911;
+            max(T)          385.1637522496073;
+            average(line,Ybar.Liq) 0.9316418595145347;
+            min(line,Ybar.Liq) 0;
+            max(line,Ybar.Liq) 1;
+            average(Ybar.Liq) 0.9316418595145347;
+            min(Ybar.Liq)   0;
+            max(Ybar.Liq)   1;
+            average(line,p) 88558589.16949257;
+            min(line,p)     9999.969880343995;
+            max(line,p)     999999999.9999678;
+            average(p)      88558589.16949257;
+            min(p)          9999.969880343995;
+            max(p)          999999999.9999678;
+            average(line,rho) 1524.183628125703;
+            min(line,rho)   994.8186497612328;
+            max(line,rho)   11582.1172110258;
+            average(rho)    1524.183628125703;
+            min(rho)        994.8186497612328;
+            max(rho)        11582.1172110258;
+        }
+        label
+        {
+            size(line,T)    5000;
+            size(T)         5000;
+            size(line,Ybar.Liq) 5000;
+            size(Ybar.Liq)  5000;
+            size(line,p)    5000;
+            size(p)         5000;
+            size(line,rho)  5000;
+            size(rho)       5000;
+            size(line,U)    5000;
+            size(U)         5000;
+        }
+        vector
+        {
+            average(line,U) ( 34.13373284 0 0 );
+            min(line,U)     ( -3.594315763e-08 0 0 );
+            max(line,U)     ( 229.413784 0 0 );
+            average(U)      ( 34.13373284 0 0 );
+            min(U)          ( -3.594315763e-08 0 0 );
+            max(U)          ( 229.413784 0 0 );
+        }
+    }
+}
+
+sample
+{
+    T
+    {
+        file            "<case>/postProcessing/sample/0.0008/line_T_Ybar.Liq_p_rho_U.csv";
+    }
+    Ybar.Liq
+    {
+        file            "<case>/postProcessing/sample/0.0008/line_T_Ybar.Liq_p_rho_U.csv";
+    }
+    p
+    {
+        file            "<case>/postProcessing/sample/0.0008/line_T_Ybar.Liq_p_rho_U.csv";
+    }
+    rho
+    {
+        file            "<case>/postProcessing/sample/0.0008/line_T_Ybar.Liq_p_rho_U.csv";
+    }
+    U
+    {
+        file            "<case>/postProcessing/sample/0.0008/line_T_Ybar.Liq_p_rho_U.csv";
+    }
+}
+
+
+// ************************************************************************* //

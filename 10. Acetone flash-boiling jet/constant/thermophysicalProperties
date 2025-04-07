@@ -1,0 +1,82 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      thermophysicalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+LiqPhaseName    Liq;
+GasPhaseName    Gas;
+
+pMin            pMin [ 1 -1 -2 0 0 0 0 ] 10;
+
+Pc    4685400; //critical pressure
+Tc    508;   //critical temperature
+
+Pt    2.87;   //triple point pressure
+Tt    180;	 //triple point temperature
+
+saturationModel
+{
+    type     Antoine;
+    A       21.54414;
+    B       -2940.47;
+    C       -35.92;
+}
+
+
+Liq
+{
+    //not used in this simulation
+    p           p;
+    T           T;
+    
+    Cp          2147.7;//2376.2;//
+    Cv          1552.7;//1689.9;//
+    mu          1.72e-4;//3.01e-4;// viscosity Pa*s
+    Pr          3.2312;//4.1899;//	Prandtl
+    rho0        663;//698.04;//782.56;//smaller density, larger velocity
+    p0          343080;//33259;//
+    T0          370.0;//300;//
+    R           1583;//3457.99;//
+    H0			93875;//-63962;//
+}
+
+Gas
+{
+    p           p;
+    T           T;
+
+    Cp          1402;//1842.9;//
+    Cv          1222.3;//1550.4;//
+    mu          1e-5;//8.06e-6;//
+    Pr          0.9;//0.79;//
+    rho0        0.0;
+    p0          0.0;
+    T0          0.0;
+    R           143.149;
+	H0			546710;//468350;//
+    // peng-RobinSon  C3H6O acetone
+    Tc			508;
+    Pc			4685400;
+    omega		0.037;
+    
+    //janaf thermodynamics  C3H6O acetone
+	Tlow            200;
+    Thigh           6000;
+    Tcommon         1000;
+    highCpCoeffs    ( 7.29797 0.0175657 -6.31678e-06 1.02026e-09 -6.10904e-14 -29536.9 -12.7592 );
+    lowCpCoeffs     ( 5.55639 -0.00283864 7.05723e-05 -8.78131e-08 3.40291e-11 -27832.5 2.3196 );
+	deltaH			4165850;
+}
+// ************************************************************************* //

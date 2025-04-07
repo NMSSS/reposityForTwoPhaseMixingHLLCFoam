@@ -1,0 +1,88 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2312                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       dictionary;
+    location    "0.0002/uniform/functionObjects";
+    object      functionObjectProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+cdf7e925f5746741c316f5fbcf39ad0dfca90775
+{
+    sample
+    {
+        scalar
+        {
+            average(line,T) 292.9993732092188;
+            min(line,T)     291.9226771047648;
+            max(line,T)     294.0761158141453;
+            average(T)      292.9993732092188;
+            min(T)          291.9226771047648;
+            max(T)          294.0761158141453;
+            average(line,p) 5499737.132678715;
+            min(line,p)     1000000.001101505;
+            max(line,p)     10000000.00024217;
+            average(p)      5499737.132678715;
+            min(p)          1000000.001101505;
+            max(p)          10000000.00024217;
+            average(line,rho) 1000.081193508364;
+            min(line,rho)   998.0102170004855;
+            max(line,rho)   1002.152170015263;
+            average(rho)    1000.081193508364;
+            min(rho)        998.0102170004855;
+            max(rho)        1002.152170015263;
+        }
+        label
+        {
+            size(line,T)    800;
+            size(T)         800;
+            size(line,p)    800;
+            size(p)         800;
+            size(line,rho)  800;
+            size(rho)       800;
+            size(line,U)    800;
+            size(U)         800;
+        }
+        vector
+        {
+            average(line,U) ( 1.79878 0 0 );
+            min(line,U)     ( -5.77637e-10 0 0 );
+            max(line,U)     ( 3.04556 0 0 );
+            average(U)      ( 1.79878 0 0 );
+            min(U)          ( -5.77637e-10 0 0 );
+            max(U)          ( 3.04556 0 0 );
+        }
+    }
+}
+
+sample
+{
+    T
+    {
+        file            "<case>/postProcessing/sample/0.0002/line_T_p_rho_U.csv";
+    }
+    p
+    {
+        file            "<case>/postProcessing/sample/0.0002/line_T_p_rho_U.csv";
+    }
+    rho
+    {
+        file            "<case>/postProcessing/sample/0.0002/line_T_p_rho_U.csv";
+    }
+    U
+    {
+        file            "<case>/postProcessing/sample/0.0002/line_T_p_rho_U.csv";
+    }
+}
+
+
+// ************************************************************************* //
